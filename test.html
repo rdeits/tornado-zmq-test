@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>hello</title>
+</head>
+<body>
+	Messages: 
+
+	<ul id="messages">
+	</ul>
+
+	<script>
+let url = `ws://${location.host}`;
+console.log(url);
+let ws = new WebSocket(url);
+ws.onmessage = function(msg) {
+	let ul = document.getElementById("messages");
+	let item = document.createElement("li");
+	item.appendChild(document.createTextNode(msg.data));
+	ul.appendChild(item);
+}
+</script>
+
+
+</body>
+</html>
